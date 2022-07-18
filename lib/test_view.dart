@@ -1,5 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'core/extension/string_extension.dart';
+import 'core/initialization/lang/language_manager.dart';
+import 'core/initialization/lang/locale_keys.g.dart';
 
 import 'core/base/state/base_state.dart';
 import 'core/base/view/base_view.dart';
@@ -21,10 +25,31 @@ class _TestViewState extends BaseState<TestView> {
       onModelReady: (dynamic controller) => _controller = controller,
       onPageBuilder: (context, value) {
         return Scaffold(
+          appBar: homeAppBar(),
           body: scaffoldBody,
           floatingActionButton: numberIncrement,
         );
       },
+    );
+  }
+
+  AppBar homeAppBar() {
+    return AppBar(
+      title: Text(
+        LocaleKeys.welcome.locale,
+      ),
+      actions: [change()],
+    );
+  }
+
+  //
+
+  IconButton change() {
+    return IconButton(
+      onPressed: () {
+        context.setLocale(LanguageManager.instance.enLocale);
+      },
+      icon: const Icon(Icons.change_circle),
     );
   }
 
