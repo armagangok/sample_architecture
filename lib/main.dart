@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sample_architecture/core/initialization/cache/locale_manager.dart';
 
 import 'core/constant/app/app_constants.dart';
 import 'core/initialization/lang/language_manager.dart';
@@ -12,6 +13,7 @@ import 'test_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await LocaleManager.prefrencesInit();
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
