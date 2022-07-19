@@ -1,14 +1,14 @@
+import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:sample_architecture/core/navigation/service/navigation_service.dart';
+import 'package:sample_architecture/core/notifier/theme_notifier.dart';
 
 class ProviderHelper {
-  static late final _instance;
+  ProviderHelper._();
+  static final instance = ProviderHelper._();
 
-  static ProviderHelper get instance {
-    _instance = ProviderHelper._init();
-    return _instance;
-  }
-
-  ProviderHelper._init();
-
-  List<SingleChildWidget> get providers => [];
+  List<SingleChildWidget> get providers => [
+        ChangeNotifierProvider(create: (context) => ThemeNotifier()),
+        Provider.value(value: NavigationService.instance)
+      ];
 }

@@ -7,10 +7,11 @@ import 'core/notifier/theme_notifier.dart';
 
 part 'test_controller.g.dart';
 
-class TestController = _TestControllerBase with _$TestController;
+class TestController = TestControllerBase with _$TestController;
 
-abstract class _TestControllerBase with Store {
-  late final BuildContext ctx;
+abstract class TestControllerBase with Store {
+  BuildContext ctx;
+  bool a = false;
 
   void setContext(BuildContext context) {
     ctx = context;
@@ -18,6 +19,9 @@ abstract class _TestControllerBase with Store {
 
   @observable
   double number1 = 0;
+  TestControllerBase({
+    required this.ctx,
+  });
 
   @computed
   bool get isEven => number1 % 2 == 0;
@@ -25,7 +29,10 @@ abstract class _TestControllerBase with Store {
   @action
   void incrementNumber() => number1 += 1;
 
-  void changeTheme(Appthemes theme) {
-    Provider.of<ThemeNotifier>(ctx, listen: false).changeTheme(theme);
+  void changeTheme() {
+    a = !a;
+
+    Provider.of<ThemeNotifier>(ctx, listen: false)
+        .changeTheme(a ? Appthemes.dark : Appthemes.light);
   }
 }

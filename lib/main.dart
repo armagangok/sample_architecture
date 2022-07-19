@@ -1,14 +1,18 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sample_architecture/core/notifier/provider_helper.dart';
-import 'package:sample_architecture/core/notifier/theme_notifier.dart';
 
 import 'core/constant/app/app_constants.dart';
 import 'core/initialization/lang/language_manager.dart';
+import 'core/navigation/route.dart';
+import 'core/navigation/service/navigation_service.dart';
+import 'core/notifier/provider_helper.dart';
+import 'core/notifier/theme_notifier.dart';
 import 'test_view.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
       supportedLocales: LanguageManager.instance.supportedLocales,
@@ -26,10 +30,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("object");
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
+      theme: Provider.of<ThemeNotifier>(context).currentTheme,
       home: const TestView(),
+      navigatorKey: NavigationService.instance.navigatorKey,
+      onGenerateRoute: NavigatorRoute.instance.generateRoute,
     );
   }
 }
