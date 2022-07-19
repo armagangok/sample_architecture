@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 
-import 'core/constant/enum/theme_enum.dart';
-import 'core/notifier/theme_notifier.dart';
+import '../../../core/constant/enum/theme_enum.dart';
+import '../../../core/network/network_manager.dart';
+import '../../../core/notifier/theme_notifier.dart';
+import '../model/test_model.dart';
 
 part 'test_controller.g.dart';
 
@@ -34,5 +36,11 @@ abstract class TestControllerBase with Store {
 
     Provider.of<ThemeNotifier>(ctx, listen: false)
         .changeTheme(a ? Appthemes.dark : Appthemes.light);
+  }
+
+  getSampleDataFromAPI() async {
+    TestModel a = await NetworkManager.instance!
+        .dioGet("https://jsonplaceholder.typicode.com/todos/1", TestModel());
+    print(a.title);
   }
 }

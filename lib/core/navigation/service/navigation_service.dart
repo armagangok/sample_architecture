@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sample_architecture/core/navigation/service/base_service.dart';
+import 'base_service.dart';
 
 class NavigationService implements BaseNavigation {
   NavigationService._();

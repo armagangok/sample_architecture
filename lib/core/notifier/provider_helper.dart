@@ -1,7 +1,8 @@
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
-import 'package:sample_architecture/core/navigation/service/navigation_service.dart';
-import 'package:sample_architecture/core/notifier/theme_notifier.dart';
+
+import '../navigation/service/navigation_service.dart';
+import 'theme_notifier.dart';
 
 class ProviderHelper {
   ProviderHelper._();

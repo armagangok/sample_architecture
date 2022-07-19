@@ -12,12 +12,12 @@ mixin _$TestController on TestControllerBase, Store {
   Computed<bool>? _$isEvenComputed;
 
   @override
-  bool get isEven => (_$isEvenComputed ??= Computed<bool>(() => super.isEven,
-          name: '_TestControllerBase.isEven'))
+  bool get isEven => (_$isEvenComputed ??=
+          Computed<bool>(() => super.isEven, name: 'TestControllerBase.isEven'))
       .value;
 
   late final _$number1Atom =
-      Atom(name: '_TestControllerBase.number1', context: context);
+      Atom(name: 'TestControllerBase.number1', context: context);
 
   @override
   double get number1 {
@@ -32,17 +32,17 @@ mixin _$TestController on TestControllerBase, Store {
     });
   }
 
-  late final _$_TestControllerBaseActionController =
-      ActionController(name: '_TestControllerBase', context: context);
+  late final _$TestControllerBaseActionController =
+      ActionController(name: 'TestControllerBase', context: context);
 
   @override
   void incrementNumber() {
-    final _$actionInfo = _$_TestControllerBaseActionController.startAction(
-        name: '_TestControllerBase.incrementNumber');
+    final _$actionInfo = _$TestControllerBaseActionController.startAction(
+        name: 'TestControllerBase.incrementNumber');
     try {
       return super.incrementNumber();
     } finally {
-      _$_TestControllerBaseActionController.endAction(_$actionInfo);
+      _$TestControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 

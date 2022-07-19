@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sample_architecture/core/initialization/cache/locale_manager.dart';
+import 'core/initialization/cache/locale_manager.dart';
 
 import 'core/constant/app/app_constants.dart';
 import 'core/initialization/lang/language_manager.dart';
@@ -9,7 +9,7 @@ import 'core/navigation/route.dart';
 import 'core/navigation/service/navigation_service.dart';
 import 'core/notifier/provider_helper.dart';
 import 'core/notifier/theme_notifier.dart';
-import 'test_view.dart';
+import 'view/test/view/test_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
