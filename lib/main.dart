@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'core/initialization/cache/locale_manager.dart';
 
 import 'core/constant/app/app_constants.dart';
+import 'core/initialization/cache/locale_manager.dart';
 import 'core/initialization/lang/language_manager.dart';
 import 'core/navigation/route.dart';
 import 'core/navigation/service/navigation_service.dart';
@@ -18,7 +18,7 @@ void main() async {
   runApp(
     EasyLocalization(
       supportedLocales: LanguageManager.instance.supportedLocales,
-      path: ApplicationConstants.LANG_ASSET_PATH,
+      path: AppConstants.langAssetName, 
       child: MultiProvider(
         providers: ProviderHelper.instance.providers,
         child: const MyApp(),

@@ -50,9 +50,8 @@ class NetworkManager {
           return responseBody.map((e) => model.fromJson(e)).toList();
         } else if (responseBody is Map) {
           return model.fromJson(responseBody);
-        } else {}
-
-        break;
+        }
+        return responseBody;
       default:
     }
   }
